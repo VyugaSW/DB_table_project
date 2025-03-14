@@ -21,6 +21,7 @@ int main(int argc, char* argv[]) {
         freopen("CONOUT$", "w", stdout);
     #endif
 
+
     freopen("data/logs.txt", "w", stderr);
 
     WindowManager windowManager;
@@ -34,9 +35,12 @@ int main(int argc, char* argv[]) {
     Table *table = init_table();
     if(!table) return 1;
 
-    fread_table(table, DEFAULT_TB_PATH); // TESTING
+    if(argc == 1){
+        const char *path_tb = argv[0];
+        fread_table(path_tb, table);
+    }
 
-    int bins[NUM_BINS] = {0}; // for diagrams
+    int bins[NUM_BINS] = {0}; // for charts
     bool running = true;
     bool waitingForReturn = false;
     int scrollOffset = 0;
