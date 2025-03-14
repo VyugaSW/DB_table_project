@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
     if(argc == 1){
         const char *path_tb = argv[0];
-        fread_table(path_tb, table);
+        fread_table(table, path_tb);
     }
 
     int bins[NUM_BINS] = {0}; // for charts
