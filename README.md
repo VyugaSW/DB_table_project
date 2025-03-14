@@ -1,5 +1,5 @@
 To launch the application you need to use mingw64 and link such libraries:
-    "-lmingw32"
+    "-lmingw32"\n
     "-lSDL2main" ({project_directory}/SDL/lib)
     "-lSDL2" ({project_directory}/SDL/lib)
     "-mwindows"
