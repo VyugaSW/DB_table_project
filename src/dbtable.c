@@ -27,7 +27,7 @@ void table_addElement(Table *table, Book *book){
     if (table->count >= table->size) {
         size_t new_size = table->size * 2;
         if (new_size <= TABLE_SIZE_MAX) {  
-            table_resize(table, new_size);
+            if(!table_resize(table, new_size)) return;
         } 
         else {
             LOG_ERROR("Resizing failed: size would overflow.\n");
@@ -39,20 +39,22 @@ void table_addElement(Table *table, Book *book){
     table->books_arr[table->count++] = book_copy(book);
 }
 
-void table_resize(Table *table, size_t new_size) {
+bool table_resize(Table *table, size_t new_size) {
     if (!table) {
         LOG_ERROR("Resizing failed: table is NULL.\n");
-        return;
+        return false;
     }
 
     Book **temp = realloc(table->books_arr, new_size * sizeof(Book*));
     if (!temp) {
         LOG_ERROR("Memory allocation failed for resizing. Current data is preserved.\n");
-        return;  
+        return false;  
     }
 
     table->books_arr = temp;
     table->size = new_size;
+
+    return true;
 }
 
 void table_delElement(Table *table, size_t id){

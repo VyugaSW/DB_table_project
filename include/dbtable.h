@@ -38,8 +38,10 @@ void table_addElement(Table *table, Book *book);
  *
  * @param[in,out] table    Pointer to the Table object.
  * @param[in]     new_size The new size for the table.
+ * 
+ * @returns True if memory was allocated. False if something went wrong.
  */
-void table_resize(Table *table, size_t new_size);
+bool table_resize(Table *table, size_t new_size);
 
 /**
  * @brief Deletes a book from the table by its ID.
