@@ -1,7 +1,7 @@
 #include "dbfile.h"
 #include "string.h"
 
-void fwrite_table(Table *table, const char* path){
+void table_fwrite(Table *table, const char* path){
     if(!table){
         LOG_ERROR("Table pointer is null. Wrong writing.\n");
         return;
@@ -24,7 +24,7 @@ void fwrite_table(Table *table, const char* path){
 }
 
 
-void fread_table(Table *table, const char *path){
+void table_fread(Table *table, const char *path){
     if(!table){
         LOG_ERROR("Table pointer in null. Wrong writing.\n");
         return;
@@ -44,8 +44,8 @@ void fread_table(Table *table, const char *path){
     int res = 0;
 
     while((res = fscanf(fptr,"{%lu|\"%[^\"]\"|%u.%u.%u|%lf}",&id,str,&day,&month,&year,&price)) == 6){
-        Book *book = init_book(str, init_date(year,month,day),price);
-        addElement_table(table,book);
+        Book *book = book_init(str, date_init(year,month,day),price);
+        table_addElement(table,book);
 
         while (fgetc(fptr) != '\n' && !feof(fptr));
     }

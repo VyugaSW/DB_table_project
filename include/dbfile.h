@@ -11,7 +11,7 @@
  * @param[in] table Pointer to the Table object to write.
  * @param[in] path  Path to the file where the table will be written.
  */
-void fwrite_table(Table *table, const char *path);
+void table_fwrite(Table *table, const char *path);
 
 /**
  * @brief Reads a table from a file.
@@ -19,4 +19,4 @@ void fwrite_table(Table *table, const char *path);
  * @param[out] table Pointer to the Table object where the data will be stored.
  * @param[in]  path  Path to the file from which the table will be read.
  */
-void fread_table(Table *table, const char *path);
+void table_fread(Table *table, const char *path);

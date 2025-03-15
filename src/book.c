@@ -1,7 +1,7 @@
 #include "book.h"
 #include <string.h>
 
-Book * init_book(char* name, Date *date, double price){
+Book * book_init(char* name, Date *date, double price){
     if(!name || !date){
         LOG_ERROR("Creating element is false\n");
         return NULL;
@@ -22,7 +22,7 @@ Book * init_book(char* name, Date *date, double price){
     return book;
 }
 
-bool compare_books(Book *book1, Book *book2, ECmp_by compare_by){
+bool book_compare(Book *book1, Book *book2, ECmp_by compare_by){
     if(!book1 || !book2){
         LOG_ERROR("Comparing books is false.\n");
     }
@@ -36,7 +36,7 @@ bool compare_books(Book *book1, Book *book2, ECmp_by compare_by){
         return strcmp(book1->name, book2->name);
 
     case BOOK_DATE:
-        return datecmp(book1->date, book2->date);
+        return date_compare(book1->date, book2->date);
 
     case PRICE:
         return book1->price > book2->price;
@@ -48,16 +48,16 @@ bool compare_books(Book *book1, Book *book2, ECmp_by compare_by){
     return false;
 }
 
-Book *copy_book(Book *book){
+Book *book_copy(Book *book){
     if(!book){
         LOG_ERROR("Copy book is false.\n");
     }
-    Book *new_book = init_book(book->name,copy_date(book->date),book->price);
+    Book *new_book = book_init(book->name,date_copy(book->date),book->price);
     new_book->id = book->id;
     return new_book;
 }
 
-void free_book(Book *book){
+void book_free(Book *book){
     if(!book){
         LOG_ERROR("Freeing book is false.\n");
     }

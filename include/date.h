@@ -20,7 +20,7 @@ typedef struct Date {
  * @param[in] day   The day of the date.
  * @return Pointer to the newly created Date object, or NULL if initialization fails.
  */
-Date *init_date(unsigned year, unsigned month, unsigned day);
+Date *date_init(unsigned year, unsigned month, unsigned day);
 
 /**
  * @brief Compares two dates.
@@ -29,7 +29,7 @@ Date *init_date(unsigned year, unsigned month, unsigned day);
  * @param[in] date2 Pointer to the second date.
  * @return true if the first date is later than the second date, false otherwise.
  */
-bool datecmp(Date *date1, Date *date2);
+bool date_compare(Date *date1, Date *date2);
 
 /**
  * @brief Creates a deep copy of a Date object.
@@ -37,7 +37,7 @@ bool datecmp(Date *date1, Date *date2);
  * @param[in] date Pointer to the Date object to copy.
  * @return Pointer to the newly copied Date object, or NULL if copying fails.
  */
-Date *copy_date(Date *date);
+Date *date_copy(Date *date);
 
 /**
  * @brief Converts a string in "DD.MM.YYYY" format to a Date object.
@@ -45,4 +45,4 @@ Date *copy_date(Date *date);
  * @param[in] dateStr The string representing the date in "DD.MM.YYYY" format.
  * @return Pointer to the newly created Date object, or NULL if conversion fails.
  */
-Date *stringToDate(const char* dateStr);
+Date *date_stringToDate(const char* dateStr);

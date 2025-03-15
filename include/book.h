@@ -34,7 +34,7 @@ typedef struct Book {
  * @param[in] price The price of the book.
  * @return Pointer to the newly created Book object, or NULL if initialization fails.
  */
-Book *init_book(char *name, Date *date, double price);
+Book *book_init(char *name, Date *date, double price);
 
 /**
  * @brief Compares two books based on the specified criteria.
@@ -44,7 +44,7 @@ Book *init_book(char *name, Date *date, double price);
  * @param[in] compare_by  The criteria to compare the books by (ID, NAME, PRICE, or BOOK_DATE).
  * @return true if the first book is greater than the second based on the criteria, false otherwise.
  */
-bool compare_books(Book *book1, Book *book2, ECmp_by compare_by);
+bool book_compare(Book *book1, Book *book2, ECmp_by compare_by);
 
 /**
  * @brief Creates a deep copy of a book.
@@ -52,11 +52,11 @@ bool compare_books(Book *book1, Book *book2, ECmp_by compare_by);
  * @param[in] book  Pointer to the book to copy.
  * @return Pointer to the newly copied Book object, or NULL if copying fails.
  */
-Book *copy_book(Book *book);
+Book *book_copy(Book *book);
 
 /**
  * @brief Frees the memory allocated for a book.
  *
  * @param[in] book  Pointer to the book to free.
  */
-void free_book(Book *book);
+void book_free(Book *book);

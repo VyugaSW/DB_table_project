@@ -23,7 +23,7 @@ typedef struct Table {
  *
  * @return Pointer to the newly created Table object, or NULL if initialization fails.
  */
-Table *init_table();
+Table *table_init();
 
 /**
  * @brief Adds a book to the table.
@@ -31,7 +31,7 @@ Table *init_table();
  * @param[in,out] table Pointer to the Table object.
  * @param[in]     book  Pointer to the Book object to add.
  */
-void addElement_table(Table *table, Book *book);
+void table_addElement(Table *table, Book *book);
 
 /**
  * @brief Resizes the table to a new size.
@@ -39,7 +39,7 @@ void addElement_table(Table *table, Book *book);
  * @param[in,out] table    Pointer to the Table object.
  * @param[in]     new_size The new size for the table.
  */
-void resize_table(Table *table, size_t new_size);
+void table_resize(Table *table, size_t new_size);
 
 /**
  * @brief Deletes a book from the table by its ID.
@@ -47,14 +47,14 @@ void resize_table(Table *table, size_t new_size);
  * @param[in,out] table Pointer to the Table object.
  * @param[in]     id    The ID of the book to delete.
  */
-void delElement_table(Table *table, size_t id);
+void table_delElement(Table *table, size_t id);
 
 /**
  * @brief Frees the memory allocated for the table and its books.
  *
  * @param[in] table Pointer to the Table object to free.
  */
-void free_table(Table *table);
+void table_free(Table *table);
 
 /**
  * @brief Prints the contents of the table.
@@ -62,7 +62,7 @@ void free_table(Table *table);
  * @param[in] books_arr Array of pointers to Book objects.
  * @param[in] count     Number of books in the array.
  */
-void print_table(const Book **books_arr, size_t count);
+void table_print(const Book **books_arr, size_t count);
 
 /**
  * @brief Sorts the books in the table based on the specified criteria.
@@ -71,4 +71,4 @@ void print_table(const Book **books_arr, size_t count);
  * @param[in]     flag       If true, sorts in ascending order; otherwise, sorts in descending order.
  * @param[in]     compare_by The criteria to sort the books by (ID, NAME, PRICE, or BOOK_DATE).
  */
-void sortElements_table(Table *table, bool flag, ECmp_by compare_by);
+void table_sort(Table *table, bool flag, ECmp_by compare_by);

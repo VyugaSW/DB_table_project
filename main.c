@@ -32,12 +32,12 @@ int main(int argc, char* argv[]) {
 
     Button headerButtons[NUM_HEADERS_BUTTON];
     
-    Table *table = init_table();
+    Table *table = table_init();
     if(!table) return 1;
 
     if(argc == 1){
         const char *path_tb = argv[0];
-        fread_table(table, path_tb);
+        table_fread(table, path_tb);
     }
 
     int bins[NUM_BINS] = {0}; // for charts
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
                     case SDL_KEYDOWN:
                         if (event.key.keysym.sym == SDLK_ESCAPE){ 
                             waitingForReturn = false;
-                            if(indexOption == 0) sortElements_table(table,true,ID);
+                            if(indexOption == 0) table_sort(table,true,ID);
                         }
                         break;
 
@@ -95,8 +95,8 @@ int main(int argc, char* argv[]) {
                                             price = 0.1;
                                         }
 
-                                        Book* input_book = init_book(input_name, stringToDate(input_date), price);
-                                        addElement_table(table, input_book);
+                                        Book* input_book = book_init(input_name, date_stringToDate(input_date), price);
+                                        table_addElement(table, input_book);
                                         printf("Added\n");
                                         free(input_book);
                                         break;
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
                                         char* endPtr;
                                         size_t id = strtoull(input_id, &endPtr, 10);
                                         if (input_id != endPtr && errno != ERANGE) {
-                                            delElement_table(table, id);
+                                            table_delElement(table, id);
                                             printf("Deleted\n");
                                         }
                                         break;
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]) {
                                         char input_path[255] = {0};
                                         if (!TableManager_HandleTextInput(windowManager.renderer, windowManager.fonts->mediumFont, "Enter path for saving to .txt file", input_path, sizeof(input_path))) break;
 
-                                        fwrite_table(table, input_path);
+                                        table_fwrite(table, input_path);
                                         printf("Saved (check log.txt)\n");
                                         break;
                                     }
@@ -134,7 +134,7 @@ int main(int argc, char* argv[]) {
                                         char input_path[255] = {0};
                                         if (!TableManager_HandleTextInput(windowManager.renderer, windowManager.fonts->mediumFont, "Enter path for loading to .txt file", input_path, sizeof(input_path))) break;
 
-                                        fread_table(table, input_path);
+                                        table_fread(table, input_path);
                                         printf("Loaded (check log.txt)\n");
                                         break;
                                     }
@@ -178,7 +178,7 @@ int main(int argc, char* argv[]) {
     }
 
     WindowManager_Cleanup(&windowManager);
-    free_table(table);
+    table_free(table);
 
     #ifdef _WIN32
         FreeConsole();

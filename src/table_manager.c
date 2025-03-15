@@ -18,16 +18,16 @@ void TableManager_HandleHeaderClick(SDL_Point mousePos, Button* headerButtons, s
             
             switch (i) {
                 case 0: 
-                    sortElements_table(table, sortState->ascending, ID);
+                    table_sort(table, sortState->ascending, ID);
                     break;
                 case 1: 
-                    sortElements_table(table, sortState->ascending, NAME);
+                    table_sort(table, sortState->ascending, NAME);
                     break;
                 case 2: 
-                    sortElements_table(table, sortState->ascending, BOOK_DATE);
+                    table_sort(table, sortState->ascending, BOOK_DATE);
                     break;
                 case 3: 
-                    sortElements_table(table, sortState->ascending, PRICE);
+                    table_sort(table, sortState->ascending, PRICE);
                     break;
                 default:
                     break;
