@@ -33,7 +33,7 @@ bool book_compare(Book *book1, Book *book2, ECmp_by compare_by){
         return book1->id > book2->id;
 
     case NAME:
-        return strcmp(book1->name, book2->name);
+        return strcasecmp(book1->name, book2->name) > 0;
 
     case BOOK_DATE:
         return date_compare(book1->date, book2->date);

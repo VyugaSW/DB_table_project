@@ -40,6 +40,8 @@ int main(int argc, char* argv[]) {
         table_fread(table, path_tb);
     }
 
+    table_fread(table,"data/data.txt"); // TESTS
+
     int bins[NUM_BINS] = {0}; // for charts
     bool running = true;
     bool waitingForReturn = false;

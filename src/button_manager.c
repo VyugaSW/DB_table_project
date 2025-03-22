@@ -16,7 +16,7 @@ void ButtonManager_InitMenuButtons(Button *buttons) {
 void ButtonManager_InitHeaderButtons(Button *buttons, int scrollOffset) {
     const char *labels[] = {"ID", "Name", "Date", "Price"};
     int x = 50;
-    for (size_t i = 0; i < NUM_MENU_BUTTONS; i++) {
+    for (size_t i = 0; i < NUM_HEADERS_BUTTON; i++) {
         buttons[i].rect = (SDL_Rect){x, 50 - scrollOffset, HEADER_BUTTON_WIDTH, HEADER_BUTTON_HEIGHT};
         buttons[i].label = labels[i];
         buttons[i].textColor = (SDL_Color){255, 255, 255, 255};

@@ -44,7 +44,8 @@ void table_fread(Table *table, const char *path){
     int res = 0;
 
     while((res = fscanf(fptr,"{%lu|\"%[^\"]\"|%u.%u.%u|%lf}",&id,str,&day,&month,&year,&price)) == 6){
-        Book *book = book_init(str, date_init(year,month,day),price);
+
+        Book *book = book_init(str, date_init(day,month,year),price);
         table_addElement(table,book);
 
         while (fgetc(fptr) != '\n' && !feof(fptr));
